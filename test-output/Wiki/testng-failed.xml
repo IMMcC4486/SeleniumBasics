@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Wiki]">
+  <parameter name="wikipedia" value="https://www.wikipedia.org/"/>
+  <test name="languages">
+    <parameter name="wikipedia" value="https://www.wikipedia.org/"/>
+    <classes>
+      <class name="basictest.WikiLang"/>
+    </classes>
+  </test> <!-- languages -->
+  <test name="Search">
+    <classes>
+      <class name="basictest.WikiSearch"/>
+    </classes>
+  </test> <!-- Search -->
+  <test name="Smoke Test">
+    <groups>
+      <run>
+        <include name="smoke"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="basictest.WikiSearch"/>
+      <class name="basictest.WikiLang"/>
+    </classes>
+  </test> <!-- Smoke Test -->
+  <test name="languages(failed)">
+    <parameter name="wikipedia" value="https://www.wikipedia.org/"/>
+    <classes>
+      <class name="basictest.WikiSearch">
+        <methods>
+          <include name="cleanup"/>
+          <include name="setUpDriverAndPage"/>
+          <include name="goToMainPage"/>
+        </methods>
+      </class> <!-- basictest.WikiSearch -->
+      <class name="basictest.WikiLang">
+        <methods>
+          <include name="goToMainPage"/>
+          <include name="cleanup"/>
+          <include name="Italian"/>
+          <include name="setUpDriverAndPage"/>
+          <include name="German"/>
+          <include name="Spanish"/>
+        </methods>
+      </class> <!-- basictest.WikiLang -->
+    </classes>
+  </test> <!-- languages(failed) -->
+</suite> <!-- Failed suite [Wiki] -->
